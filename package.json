@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cbril/LeetCode-Top-Interview-150-Typescript#readme",
   "devDependencies": {
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
