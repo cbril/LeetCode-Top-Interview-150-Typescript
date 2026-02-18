@@ -1,6 +1,8 @@
-# Javascript
+# Typescript
 *.js
 *.js.map
+*.d.ts
+*.d.ts.map
 
 # Logs
 logs
