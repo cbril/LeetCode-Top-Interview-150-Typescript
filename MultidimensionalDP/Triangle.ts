@@ -1,7 +1,4 @@
-/**
- * 120. Triangle
- * https://leetcode.com/problems/triangle/description
- */
+// 120. Triangle https://leetcode.com/problems/triangle/description
 
 /**
  * @param triangle Integers arranged in the shape of a triangle, given as a list of lists of
@@ -11,60 +8,55 @@
  *  When moving down from index i, you can move to either index i or i+1 of the row below.
  */
 function minimumTotalAttemptOne(triangle: number[][]): number {
-    /* 
-    Each number in the triangle can be imagined as the top of its own sub-triangle.
-    There are potentially many paths to reach that number from the top, 
-    each path resulting in a different sum.
-
-    Move down the triangle from the top. For each number, look at the sums of the number(s) which
-    may have preceded it in the path, add the number's value to the preceding number's sums, 
-    and store the resulting sum.
-    */
+    // Each number in the triangle can be imagined as the top of its own sub-triangle.
+    // There are potentially many paths to reach that number from the top,
+    // each path resulting in a different sum.
+    //
+    // Move down the triangle from the top. For each number, look at the sums of the number(s) which
+    // may have preceded it in the path, add the number's value to the preceding number's sums,
+    // and store the resulting sum.
 
     if (triangle.length === 0 || triangle[0]!.length === 0) {
         return 0
     }
 
-    /*
-    prevRowSums contains, for the previous row of the triangle, all possible sums to reach 
-    each number. We only need to check one row above us. In order not to waste memory,
-    reassign the variable after each row visited.
-    */
+    // prevRowSums contains, for the previous row of the triangle, all possible sums to reach
+    // each number. We only need to check one row above us. In order not to waste memory,
+    // reassign the variable after each row visited.
     let prevRowSums: Set<number>[] = []
 
     for (let row of triangle) {
-
         if (row.length == 1) {
-            prevRowSums.push( new Set([row[0]!]) )
+            prevRowSums.push(new Set([row[0]!]))
             continue
         }
 
         const thisRowSums: Set<number>[] = []
         row.forEach((num, idx) => {
-            const sumsForNum = new Set<number>
+            const sumsForNum = new Set<number>()
             // The first and last number in the row only have one number above it
-            const topLeftIdx = Math.max(idx-1, 0)
-            const topRightIdx = Math.min(idx, prevRowSums.length-1)
+            const topLeftIdx = Math.max(idx - 1, 0)
+            const topRightIdx = Math.min(idx, prevRowSums.length - 1)
             const sums = new Set<number>()
-            prevRowSums[topLeftIdx]!.forEach(sum => sums.add(sum))
+            prevRowSums[topLeftIdx]!.forEach((sum) => sums.add(sum))
             if (topRightIdx !== topLeftIdx) {
-                prevRowSums[topRightIdx]?.forEach(sum => sums.add(sum))
+                prevRowSums[topRightIdx]?.forEach((sum) => sums.add(sum))
             }
 
-            sums.forEach(sum => sumsForNum.add(num + sum))
+            sums.forEach((sum) => sumsForNum.add(num + sum))
             thisRowSums.push(sumsForNum)
         })
 
         prevRowSums = thisRowSums
     }
 
-    return Math.min(...prevRowSums!.flatMap(sums => [...sums]))
+    return Math.min(...prevRowSums!.flatMap((sums) => [...sums]))
 }
 
 /**
  * The mistake I made was, for each number, storing every possible sum to reach it
  * when all I need is the minimum sum to reach it.
- * 
+ *
  * @param triangle Integers arranged in the shape of a triangle, given as a list of lists of
  *  integers. The first list has 1 integer, and each subsequent list has one more integer than
  *  the previous list.
@@ -72,28 +64,23 @@ function minimumTotalAttemptOne(triangle: number[][]): number {
  *  When moving down from index i, you can move to either index i or i+1 of the row below.
  */
 function minimumTotalAttemptTwo(triangle: number[][]): number {
-    /* 
-    Each number in the triangle can be imagined as the top of its own sub-triangle.
-    There are potentially many paths to reach that number from the top, 
-    each path resulting in a different sum, one of those being the minimum.
-
-    Move down the triangle from the top. For each number, look at the minimum sum of the 
-    number(s) which may have preceded it in the path, add the number's value to the preceding 
-    number's sum, and store the resulting sum.
-    */
+    // Each number in the triangle can be imagined as the top of its own sub-triangle.
+    // There are potentially many paths to reach that number from the top,
+    // each path resulting in a different sum, one of those being the minimum.
+    //
+    // Move down the triangle from the top. For each number, look at the minimum sum of the
+    // number(s) which may have preceded it in the path, add the number's value to the preceding
+    // number's sum, and store the resulting sum.
 
     if (triangle.length === 0 || triangle[0]!.length === 0) {
         return 0
     }
 
-    /*
-    prevRowMinSums contains, for the previous row of the triangle, the minimum sum path
-    to reach each number. We only need to check one row above us.
-    */
+    // prevRowMinSums contains, for the previous row of the triangle, the minimum sum path
+    // to reach each number. We only need to check one row above us.
     let prevRowMinSums: number[] = []
 
     for (let row of triangle) {
-
         if (row.length == 1) {
             prevRowMinSums.push(row[0]!)
             continue
@@ -102,14 +89,13 @@ function minimumTotalAttemptTwo(triangle: number[][]): number {
         const thisRowMinSums: number[] = []
         row.forEach((num, idx) => {
             // The first and last number in the row only have one number above it
-            const topLeftIdx = Math.max(idx-1, 0)
-            const topRightIdx = Math.min(idx, prevRowMinSums.length-1)
+            const topLeftIdx = Math.max(idx - 1, 0)
+            const topRightIdx = Math.min(idx, prevRowMinSums.length - 1)
             let prevMinSum: number
             if (topRightIdx === topLeftIdx) {
                 prevMinSum = prevRowMinSums[topLeftIdx]!
             } else {
-                prevMinSum = Math.min(
-                    prevRowMinSums[topLeftIdx]!, prevRowMinSums[topRightIdx]!)
+                prevMinSum = Math.min(prevRowMinSums[topLeftIdx]!, prevRowMinSums[topRightIdx]!)
             }
             thisRowMinSums.push(prevMinSum + num)
         })
@@ -120,26 +106,23 @@ function minimumTotalAttemptTwo(triangle: number[][]): number {
     return Math.min(...prevRowMinSums)
 }
 
-
 function stringifyTriangle(triangle: number[][]): string {
     // code generated by AI
-    const maxWidth = triangle![triangle!.length - 1]!.length * 3 - 1;
+    const maxWidth = triangle![triangle!.length - 1]!.length * 3 - 1
     return triangle
-        .map(row => {
-            const rowStr = row.join("  ");
-            const padding = Math.floor((maxWidth - rowStr.length) / 2);
-            return " ".repeat(padding) + rowStr;
+        .map((row) => {
+            const rowStr = row.join("  ")
+            const padding = Math.floor((maxWidth - rowStr.length) / 2)
+            return " ".repeat(padding) + rowStr
         })
-        .join("\n");
+        .join("\n")
 }
 
 function main(): void {
-    let triangle = [
-        [2],
-        [3,4],
-        [6,5,7],
-        [4,1,8,3]]
-    console.log(`Triangle:\n${stringifyTriangle(triangle)}\nMinimum path sum: ${minimumTotalAttemptTwo(triangle)}\n\n`)
+    let triangle = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
+    console.log(
+        `Triangle:\n${stringifyTriangle(triangle)}\nMinimum path sum: ${minimumTotalAttemptTwo(triangle)}\n\n`
+    )
 }
 
 main()
