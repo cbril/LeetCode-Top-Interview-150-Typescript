@@ -1,7 +1,4 @@
-/**
- * 120. Triangle
- * https://leetcode.com/problems/triangle/description
- */
+// 120. Triangle https://leetcode.com/problems/triangle/description
 
 /**
  * @param triangle Integers arranged in the shape of a triangle, given as a list of lists of
@@ -11,25 +8,21 @@
  *  When moving down from index i, you can move to either index i or i+1 of the row below.
  */
 function minimumTotalAttemptOne(triangle: number[][]): number {
-    /* 
-    Each number in the triangle can be imagined as the top of its own sub-triangle.
-    There are potentially many paths to reach that number from the top, 
-    each path resulting in a different sum.
-
-    Move down the triangle from the top. For each number, look at the sums of the number(s) which
-    may have preceded it in the path, add the number's value to the preceding number's sums, 
-    and store the resulting sum.
-    */
+    // Each number in the triangle can be imagined as the top of its own sub-triangle.
+    // There are potentially many paths to reach that number from the top,
+    // each path resulting in a different sum.
+    //
+    // Move down the triangle from the top. For each number, look at the sums of the number(s) which
+    // may have preceded it in the path, add the number's value to the preceding number's sums,
+    // and store the resulting sum.
 
     if (triangle.length === 0 || triangle[0]!.length === 0) {
         return 0
     }
 
-    /*
-    prevRowSums contains, for the previous row of the triangle, all possible sums to reach 
-    each number. We only need to check one row above us. In order not to waste memory,
-    reassign the variable after each row visited.
-    */
+    // prevRowSums contains, for the previous row of the triangle, all possible sums to reach
+    // each number. We only need to check one row above us. In order not to waste memory,
+    // reassign the variable after each row visited.
     let prevRowSums: Set<number>[] = []
 
     for (let row of triangle) {
@@ -72,24 +65,20 @@ function minimumTotalAttemptOne(triangle: number[][]): number {
  *  When moving down from index i, you can move to either index i or i+1 of the row below.
  */
 function minimumTotalAttemptTwo(triangle: number[][]): number {
-    /* 
-    Each number in the triangle can be imagined as the top of its own sub-triangle.
-    There are potentially many paths to reach that number from the top, 
-    each path resulting in a different sum, one of those being the minimum.
-
-    Move down the triangle from the top. For each number, look at the minimum sum of the 
-    number(s) which may have preceded it in the path, add the number's value to the preceding 
-    number's sum, and store the resulting sum.
-    */
+    // Each number in the triangle can be imagined as the top of its own sub-triangle.
+    // There are potentially many paths to reach that number from the top,
+    // each path resulting in a different sum, one of those being the minimum.
+    //
+    // Move down the triangle from the top. For each number, look at the minimum sum of the
+    // number(s) which may have preceded it in the path, add the number's value to the preceding
+    // number's sum, and store the resulting sum.
 
     if (triangle.length === 0 || triangle[0]!.length === 0) {
         return 0
     }
 
-    /*
-    prevRowMinSums contains, for the previous row of the triangle, the minimum sum path
-    to reach each number. We only need to check one row above us.
-    */
+    // prevRowMinSums contains, for the previous row of the triangle, the minimum sum path
+    // to reach each number. We only need to check one row above us.
     let prevRowMinSums: number[] = []
 
     for (let row of triangle) {

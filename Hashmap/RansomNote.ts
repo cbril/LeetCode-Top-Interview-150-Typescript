@@ -1,7 +1,4 @@
-/**
- * 383. Ransom Note
- * https://leetcode.com/problems/ransom-note
- */
+// 383. Ransom Note https://leetcode.com/problems/ransom-note
 
 /**
  * 
@@ -24,12 +21,11 @@ function getCharacterMap(text: string): Map<string, number> {
  *          (no reusing letters), false otherwise
  */
 function canConstruct(ransomNote: string, magazine: string): boolean {
-    /** My first idea is to iterate through each letter in "ransomNote" and search for that letter
-     * in "magazine", removing it from magazine if it's found. But this time complexity is O(n^2).
-     * 
-     * I'll try using a map of "magazine" with character as key and character count as value which has
-     * time complexity of O(n)
-     */
+    // My first idea is to iterate through each letter in "ransomNote" and search for that letter
+    // in "magazine", removing it from magazine if it's found. But this time complexity is O(n^2).    
+    // I'll try using a map of "magazine" with character as key and character count as value which has
+    // time complexity of O(n)
+
     const characterMap: Map<string, number> = getCharacterMap(magazine);
     for (const char of ransomNote) {
         const count = characterMap.get(char);

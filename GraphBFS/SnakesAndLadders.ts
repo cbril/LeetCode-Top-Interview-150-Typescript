@@ -1,7 +1,4 @@
-/**
- * 909. Snakes and Ladders
- * https://leetcode.com/problems/snakes-and-ladders
- */
+// 909. Snakes and Ladders https://leetcode.com/problems/snakes-and-ladders
 
 /**
  * Returns the minimum number of moves required to traverse the snakes and ladders board.

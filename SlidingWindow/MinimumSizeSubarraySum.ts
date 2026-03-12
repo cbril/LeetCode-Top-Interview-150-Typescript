@@ -1,7 +1,4 @@
-/**
- * 209. Minimum Size Subarray Sum
- * https://leetcode.com/problems/minimum-size-subarray-sum
- */
+// 209. Minimum Size Subarray Sum https://leetcode.com/problems/minimum-size-subarray-sum
 
 /**
  * Find the minimum length of a sub-array in the array with a sum greater than or equal to the target.
@@ -48,11 +45,9 @@ function getMinSubArrayLenFirstAttempt(target: number, nums: number[]): number {
  * @param nums array of positive integers
  */
 function getMinSubArrayLenSecondAttempt(target: number, nums: number[]): number {
-    /**
-     * In this approach I will move both the start index and end index,
-     * instead of only the forward index. And when I reach the target, instead of re-setting the
-     * end index, I will keep it the same and move the start index up.
-     */
+    // In this approach I will move both the start index and end index,
+    // instead of only the forward index. And when I reach the target, instead of re-setting the
+    // end index, I will keep it the same and move the start index up.
 
     if (nums.length == 0) {
         return 0

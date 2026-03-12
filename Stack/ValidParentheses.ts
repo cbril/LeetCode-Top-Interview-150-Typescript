@@ -1,7 +1,4 @@
-/**
- * 20. Valid Parentheses
- * https://leetcode.com/problems/valid-parentheses
- */
+// 20. Valid Parentheses https://leetcode.com/problems/valid-parentheses
 
 /**
  * This solution is wrong because this is a valid string as well but is not symmetrical: "()[]{}" 
