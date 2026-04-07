@@ -63,7 +63,7 @@ function minimumTotalAttemptOne(triangle: number[][]): number {
  * @returns The minimum sum of all paths from the top to the bottom of the triangle.
  *  When moving down from index i, you can move to either index i or i+1 of the row below.
  */
-function minimumTotalAttemptTwo(triangle: number[][]): number {
+export function minimumTotalAttemptTwo(triangle: number[][]): number {
     // Each number in the triangle can be imagined as the top of its own sub-triangle.
     // There are potentially many paths to reach that number from the top,
     // each path resulting in a different sum, one of those being the minimum.
@@ -117,12 +117,3 @@ function stringifyTriangle(triangle: number[][]): string {
         })
         .join("\n")
 }
-
-function main(): void {
-    let triangle = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
-    console.log(
-        `Triangle:\n${stringifyTriangle(triangle)}\nMinimum path sum: ${minimumTotalAttemptTwo(triangle)}\n\n`
-    )
-}
-
-main()

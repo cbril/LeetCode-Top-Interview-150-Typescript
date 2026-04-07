@@ -20,7 +20,7 @@ function getCharacterMap(text: string): Map<string, number> {
  * @returns true if "ransomNote" can be constructed with the letters from "magazine"
  *          (no reusing letters), false otherwise
  */
-function canConstruct(ransomNote: string, magazine: string): boolean {
+export function canConstruct(ransomNote: string, magazine: string): boolean {
     // My first idea is to iterate through each letter in "ransomNote" and search for that letter
     // in "magazine", removing it from magazine if it's found. But this time complexity is O(n^2).
     // I'll try using a map of "magazine" with character as key and character count as value
@@ -37,19 +37,3 @@ function canConstruct(ransomNote: string, magazine: string): boolean {
     }
     return true
 }
-
-function main(): void {
-    var ransomNote = "cookie"
-    var magazine = "chocolate chip cookie"
-    console.log(
-        `${ransomNote} can be constructed by ${magazine}: ${canConstruct(ransomNote, magazine)}`
-    )
-
-    ransomNote = "baddie"
-    magazine = "bad"
-    console.log(
-        `${ransomNote} can be constructed by ${magazine}: ${canConstruct(ransomNote, magazine)}`
-    )
-}
-
-main()

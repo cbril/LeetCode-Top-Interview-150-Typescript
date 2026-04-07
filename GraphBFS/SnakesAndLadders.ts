@@ -10,7 +10,7 @@
  *  in Boustrophedon style, starting from the bottom left corner.
  * @returns the minimum number of moves to traverse the board.
  */
-function snakesAndLadders(board: number[][]): number {
+export function snakesAndLadders(board: number[][]): number {
     // Flatten the 2-dimensional matrix to a 1-dimensional list.
     // Necessary to build the adjacency list later.
     const boardList: number[] = []
@@ -80,17 +80,3 @@ function snakesAndLadders(board: number[][]): number {
     // No path to the end was found.
     return -1
 }
-
-function main(): void {
-    let board: number[][] = [
-        [-1, -1, -1, -1, -1, -1],
-        [-1, -1, -1, -1, -1, -1],
-        [-1, -1, -1, -1, -1, -1],
-        [-1, 35, -1, -1, 13, -1],
-        [-1, -1, -1, -1, -1, -1],
-        [-1, 15, -1, -1, -1, -1]
-    ]
-    console.log(`Board:\n${board}\nMinimum path: ${snakesAndLadders(board)}\n\n`)
-}
-
-main()

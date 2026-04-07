@@ -42,7 +42,7 @@ function isValidParenthesesFirstAttempt(s: string): boolean {
  * "({})" -> true
  * "(({))" -> false
  */
-function isValidParenthesesSecondAttempt(s: string): boolean {
+export function isValidParenthesesSecondAttempt(s: string): boolean {
     // Need to know if a symbol is an "opener" or a "closer".
     // If it's an opener, push it to a LIFO stack.
     // If it's a closer, pop an opener from the queue and verify that it's the right opener for
@@ -77,24 +77,3 @@ function isValidParenthesesSecondAttempt(s: string): boolean {
 
     return true
 }
-
-function main(): void {
-    let s = "([])({})(([]))"
-    console.log(
-        `String "${s}" is valid parentheses: [${isValidParenthesesSecondAttempt(s)}] (should be true)\n`
-    )
-    s = "((((([[[[{{{}}}]]]])))))[]{}"
-    console.log(
-        `String "${s}" is valid parentheses: [${isValidParenthesesSecondAttempt(s)}] (should be true)\n`
-    )
-    s = "[[[{()]]]"
-    console.log(
-        `String "${s}" is valid parentheses: [${isValidParenthesesSecondAttempt(s)}] (should be false)\n`
-    )
-    s = "(){}["
-    console.log(
-        `String "${s}" is valid parentheses: [${isValidParenthesesSecondAttempt(s)}] (should be false)\n`
-    )
-}
-
-main()

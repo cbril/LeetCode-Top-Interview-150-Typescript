@@ -44,7 +44,7 @@ function getMinSubArrayLenFirstAttempt(target: number, nums: number[]): number {
  * @param target the target sum of consecutive numbers in "nums"
  * @param nums array of positive integers
  */
-function getMinSubArrayLenSecondAttempt(target: number, nums: number[]): number {
+export function getMinSubArrayLenSecondAttempt(target: number, nums: number[]): number {
     // In this approach I will move both the start index and end index,
     // instead of only the forward index. And when I reach the target, instead of re-setting the
     // end index, I will keep it the same and move the start index up.
@@ -89,37 +89,3 @@ function getMinSubArrayLenSecondAttempt(target: number, nums: number[]): number 
     }
     return minSubArrayLen
 }
-
-function main(): void {
-    let target = 4
-    let nums = [1, 1, 1, 2, 2, 4]
-    console.log(
-        `Target: ${target}, numbers: ${nums}\nMinimum subarray length: ${getMinSubArrayLenSecondAttempt(target, nums)}`
-    )
-
-    target = 10
-    nums = [10, 2, 5, 5]
-    console.log(
-        `Target: ${target}, numbers: ${nums}\nMinimum subarray length: ${getMinSubArrayLenSecondAttempt(target, nums)}`
-    )
-
-    target = 4
-    nums = [2, 1, 3]
-    console.log(
-        `Target: ${target}, numbers: ${nums}\nMinimum subarray length: ${getMinSubArrayLenSecondAttempt(target, nums)}`
-    )
-
-    target = 20
-    nums = [3, 5, 2, 1, 2, 2]
-    console.log(
-        `Target: ${target}, numbers: ${nums}\nMinimum subarray length: ${getMinSubArrayLenSecondAttempt(target, nums)}`
-    )
-
-    target = 1
-    nums = []
-    console.log(
-        `Target: ${target}, numbers: ${nums}\nMinimum subarray length: ${getMinSubArrayLenSecondAttempt(target, nums)}`
-    )
-}
-
-main()

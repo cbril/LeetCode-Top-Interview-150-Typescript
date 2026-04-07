@@ -37,7 +37,7 @@ function lengthOfLongestSubstringAttemptOne(s: string): number {
  * @returns The length of the longest substring without duplicate characters
  * @example "abcdab" -> 4 because of "abcd"
  */
-function lengthOfLongestSubstringAttemptTwo(s: string): number {
+export function lengthOfLongestSubstringAttemptTwo(s: string): number {
     // As LeetCode suggests, we can use a "sliding window".
     // In the case of "dvdf", upon finding the second "d", we should not restart the substring
     // at the second "d". We should move the start of the substring from the first "d"
@@ -67,23 +67,3 @@ function lengthOfLongestSubstringAttemptTwo(s: string): number {
     }
     return maxSubstrLen
 }
-
-function main() {
-    let s = "abcdab"
-    let longestLen = lengthOfLongestSubstringAttemptTwo(s)
-    console.log(`Longest substring in "${s}" has length ${longestLen}\n`)
-
-    s = ""
-    longestLen = lengthOfLongestSubstringAttemptTwo(s)
-    console.log(`Longest substring in "${s}" has length ${longestLen}\n`)
-
-    s = "dvdf" // should be 3
-    longestLen = lengthOfLongestSubstringAttemptTwo(s)
-    console.log(`Longest substring in "${s}" has length ${longestLen}\n`)
-
-    s = "aaaa! aaaa!aaa aaaaagrcaobd!" // should be 8
-    longestLen = lengthOfLongestSubstringAttemptTwo(s)
-    console.log(`Longest substring in "${s}" has length ${longestLen}\n`)
-}
-
-main()
