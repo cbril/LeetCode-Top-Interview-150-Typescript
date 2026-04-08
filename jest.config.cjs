@@ -1,9 +1,10 @@
-const { createDefaultEsmPreset } = require("ts-jest");
+const { createDefaultEsmPreset } = require("ts-jest")
 
-const presetConfig = createDefaultEsmPreset();
+const presetConfig = createDefaultEsmPreset()
 
 /** @type {import("jest").Config} **/
 module.exports = {
-  testEnvironment: "node",
-  ...presetConfig,
-};
+    testEnvironment: "node",
+    ...presetConfig,
+    testMatch: ["**/*.spec.ts"]
+}
