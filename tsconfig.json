@@ -1,6 +1,6 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
-  "exclude": ["**/*.spec.ts"],
+  
   "compilerOptions": {
     // File Layout
     // "rootDir": "./src",
