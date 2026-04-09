@@ -9,6 +9,18 @@
             "runtimeArgs": ["tsx", "${file}"],
             "console": "integratedTerminal",
             "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "name": "Jest Current File",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "args": [
+                "${fileBasename}",
+                "--no-coverage"
+            ],
+            "runtimeArgs": ["--experimental-vm-modules"],
+            "console": "integratedTerminal"
         }
     ]
 }
