@@ -6,5 +6,7 @@ https://leetcode.com/studyplan/top-interview-150/
 
 Each file is named after the LeetCode problem.
 
-## Testing
-Test all solutions with `npm test`
+## Testing the solutions
+- Install NodeJS
+- run `npm install`
+- run `npm test`
